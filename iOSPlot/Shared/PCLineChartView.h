@@ -59,6 +59,10 @@
 @property (nonatomic, assign) NSUInteger numYIntervals; // Use n*5 for best results
 @property (nonatomic, assign) NSUInteger numXIntervals;
 
+@property (nonatomic, assign) float lineStrokeWidth;
+@property (nonatomic, assign) float circleStrokeWidth;
+@property (nonatomic, assign) float circleDiameter;
+
 ///
 /// Map of equivalences between a Y value and a string value. Useful to display
 /// custom value as Y labels instead of the real value

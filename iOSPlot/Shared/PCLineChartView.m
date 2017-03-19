@@ -50,19 +50,34 @@
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		[self setBackgroundColor:[UIColor clearColor]];
-		_interval = 20;
-		_maxValue = 100;
-		_minValue = 0;
-		_yLabelFont = [UIFont boldSystemFontOfSize:14];
-		_xLabelFont = [UIFont boldSystemFontOfSize:12];
-		_valueLabelFont = [UIFont boldSystemFontOfSize:10];
-		_legendFont = [UIFont boldSystemFontOfSize:10];
-		_numYIntervals = 5;
-		_numXIntervals = 1;
-		_yLabelAlignment = NSTextAlignmentRight;
+		[self initialize];
 	}
 	return self;
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		[self initialize];
+	}
+	return self;
+}
+
+- (void) initialize {
+//	[self setBackgroundColor:[UIColor clearColor]];
+	_interval = 20;
+	_maxValue = 100;
+	_minValue = 0;
+	_yLabelFont = [UIFont boldSystemFontOfSize:14];
+	_xLabelFont = [UIFont boldSystemFontOfSize:12];
+	_valueLabelFont = [UIFont boldSystemFontOfSize:10];
+	_legendFont = [UIFont boldSystemFontOfSize:10];
+	_numYIntervals = 5;
+	_numXIntervals = 1;
+	_yLabelAlignment = NSTextAlignmentRight;
+	_lineStrokeWidth = 4;
+	_circleStrokeWidth = 3;
+	_circleDiameter = 10;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -141,9 +156,9 @@
 
 	NSMutableArray *legends = [NSMutableArray array];
 
-	float circle_diameter = 10;
-	float circle_stroke_width = 3;
-	float line_width = 4;
+	float circle_diameter = self.circleDiameter;
+	float circle_stroke_width = self.circleStrokeWidth;
+	float line_width = self.lineStrokeWidth;
 
 	for (PCLineChartViewComponent *component in self.components) {
 		int last_x = 0;

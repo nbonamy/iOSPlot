@@ -79,7 +79,7 @@
     return self;
 }
 
-#define LABEL_TOP_MARGIN 15
+#define LABEL_TOP_MARGIN 25
 #define ARROW_HEAD_LENGTH 6
 #define ARROW_HEAD_WIDTH 4
 
@@ -166,7 +166,7 @@
 		
 		nextStartDeg = 0;
 		endDeg = 0;
-		float max_text_width = x -  10;
+		float max_text_width = x -  20;
 		for (int i=0; i<[tmpComponents count]; i++)
 		{
 			PCPieComponent *component  = [tmpComponents objectAtIndex:i];
@@ -313,11 +313,11 @@
 				}
 				// display title on the left
 				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
-				left_label_y += optimumSize.height - 4;
+				left_label_y += optimumSize.height - 14;
 				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
 				CGRect titleFrame = CGRectMake(5, left_label_y, max_text_width, optimumSize.height);
 				[component.title drawInRect:titleFrame withFont:self.titleFont lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentRight];
-				left_label_y += optimumSize.height + 10;
+				left_label_y += optimumSize.height + 50;
 			}
 			else 
 			{
@@ -447,11 +447,11 @@
 				
 				// display title on the left
 				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
-				right_label_y += optimumSize.height - 4;
+				right_label_y += optimumSize.height - 14;
 				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
 				CGRect titleFrame = CGRectMake(text_x, right_label_y, optimumSize.width, optimumSize.height);
 				[component.title drawInRect:titleFrame withFont:self.titleFont];
-				right_label_y += optimumSize.height + 10;
+				right_label_y += optimumSize.height + 50;
 			}
 			nextStartDeg = endDeg;
 		}
